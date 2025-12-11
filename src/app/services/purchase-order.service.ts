@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { PurchaseOrderDto } from '../models/purchase-order-dto';
+import { POStatus, PurchaseOrderDto } from '../models/purchase-order-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class PurchaseOrderService {
     return this.http.post<PurchaseOrderDto>(`${this.apiUrl}/create`, order);
   }
 
-  getOrdersAll(supplier?: string, status?: string, page: number = 1, pageSize: number = 10): Observable<any> {
+  getOrdersAll(supplier?: string, status?: POStatus, page: number = 1, pageSize: number = 10): Observable<any> {
     const params: any = {supplier,status,page,pageSize};
     return this.http.get<any>(this.apiUrl, { params });
   }

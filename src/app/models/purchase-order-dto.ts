@@ -1,3 +1,11 @@
+export enum POStatus {
+  Draft = 'Draft',
+  Approved = 'Approved',
+  Shipped = 'Shipped',
+  Completed = 'Completed',
+  Cancelled = 'Cancelled'
+}
+
 export interface PurchaseOrderDto {
   id?: number;
   poNumber: string;

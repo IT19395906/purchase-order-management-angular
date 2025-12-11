@@ -7,12 +7,7 @@
       </div>
       <div class="col-md-4">
         <select [(ngModel)]="status" (change)="onFilterChange()" class="form-select">
-          <option value="">All</option>
-          <option value="Draft">Draft</option>
-          <option value="Approved">Approved</option>
-          <option value="Shipped">Shipped</option>
-          <option value="Completed">Completed</option>
-          <option value="Cancelled">Cancelled</option>
+          <option *ngFor="let statusOption of statusOptions" [value]="statusOption">{{ statusOption }}</option>
         </select>
       </div>
     </div>

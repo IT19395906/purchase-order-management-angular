@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PurchaseOrderService } from '../../services/purchase-order.service';
-import { PurchaseOrderDto } from '../../models/purchase-order-dto';
+import { POStatus, PurchaseOrderDto } from '../../models/purchase-order-dto';
 
 @Component({
   selector: 'app-purchase-order-list',
@@ -15,7 +15,8 @@ export class PurchaseOrderListComponent implements OnInit {
   page: number = 1;
   pageSize: number = 10;
   supplier: string = '';
-  status: string = '';
+  status: POStatus = POStatus.Draft;
+  statusOptions: string[] = Object.values(POStatus);
 
   constructor(private poService: PurchaseOrderService) { }
 
