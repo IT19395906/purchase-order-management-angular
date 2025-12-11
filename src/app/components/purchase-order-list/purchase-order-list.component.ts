@@ -15,7 +15,7 @@ export class PurchaseOrderListComponent implements OnInit {
   page: number = 1;
   pageSize: number = 10;
   supplier: string = '';
-  status: POStatus = POStatus.Draft;
+  status: POStatus | undefined = undefined;
   statusOptions: string[] = Object.values(POStatus);
 
   constructor(private poService: PurchaseOrderService) { }
