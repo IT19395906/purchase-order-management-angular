@@ -1,0 +1,48 @@
+<div class="container mt-4">
+    <div *ngIf="loading" class="alert alert-info">
+        <h1 class="text-center fw-bold">Get Order By ID</h1>
+        loading data
+    </div>
+
+    <div *ngIf="error" class="alert alert-danger">
+        <h1 class="text-center fw-bold">Order Not Found</h1>
+        {{ error }}
+    </div>
+
+    <div *ngIf="purchaseOrder" class="card">
+        <div class="card-header">
+            <h3>Purchase Order Data</h3>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <label class="col-sm-3">PO Number</label>
+                <div class="col-sm-9">{{ purchaseOrder.poNumber }}</div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3">Description</label>
+                <div class="col-sm-9">{{ purchaseOrder.description }}</div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3">Supplier</label>
+                <div class="col-sm-9">{{ purchaseOrder.supplierName }}</div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3">Order Date</label>
+                <div class="col-sm-9">{{ purchaseOrder.orderDate | date }}</div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3">Total Amount</label>
+                <div class="col-sm-9">{{ purchaseOrder.totalAmount | currency }}</div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3">Status</label>
+                <div class="col-sm-9">{{ purchaseOrder.status }}</div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-warning btn-sm" [routerLink]="['/orders', purchaseOrder.id, 'edit']">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteOrder()">Delete</button>
+            <button class="btn btn-secondary btn-sm" [routerLink]="['/orders']">Back</button>
+        </div>
+    </div>
+</div>

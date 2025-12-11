@@ -1,0 +1,46 @@
+<div class="container mt-4">
+  <h3 class="text-center mb-2">{{ isEditMode ? 'Modify Existing' : 'Create' }} Purchase Order</h3>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <form (ngSubmit)="save()">
+    <div class="mb-3">
+      <label for="poNumber" class="form-label">PO Number</label>
+      <input type="text" id="poNumber" class="form-control" [(ngModel)]="purchaseOrder.poNumber" name="poNumber" required/>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input type="text" id="description" class="form-control" [(ngModel)]="purchaseOrder.description" name="description" required/>
+    </div>
+
+    <div class="mb-3">
+      <label for="supplierName" class="form-label">Supplier</label>
+      <input type="text" id="supplierName" class="form-control" [(ngModel)]="purchaseOrder.supplierName" name="supplierName" required/>
+    </div>
+
+    <div class="mb-3">
+      <label for="orderDate" class="form-label">Order Date</label>
+      <input type="date" id="orderDate" class="form-control" [(ngModel)]="purchaseOrder.orderDate" name="orderDate" required/>
+    </div>
+
+    <div class="mb-3">
+      <label for="totalAmount" class="form-label">Total Amount</label>
+      <input type="number" id="totalAmount" class="form-control" [(ngModel)]="purchaseOrder.totalAmount" name="totalAmount" required min="0"/>
+    </div>
+
+    <div class="mb-3">
+      <label for="status" class="form-label">Status</label>
+      <select id="status" class="form-select" [(ngModel)]="purchaseOrder.status" name="status" required>
+        <option value="Draft">Draft</option>
+        <option value="Approved">Approved</option>
+        <option value="Shipped">Shipped</option>
+        <option value="Completed">Completed</option>
+        <option value="Cancelled">Cancelled</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Update Existing Order' : 'Create Order' }}</button>
+    <a [routerLink]="['/orders']" class="btn btn-secondary ms-2">Cancel</a>
+  </form>
+</div>
